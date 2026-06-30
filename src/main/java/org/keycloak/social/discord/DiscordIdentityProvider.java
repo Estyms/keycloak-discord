@@ -159,10 +159,7 @@ public class DiscordIdentityProvider
                     for (JsonNode role : guildMember.get("roles")) {
                         String roleString = role.textValue();
                         if (mappedRoles.get(guild).containsKey(roleString)) {
-                            groups.add(
-                                "discord-" +
-                                    mappedRoles.get(guild).get(roleString)
-                            );
+                            groups.add(mappedRoles.get(guild).get(roleString));
                         }
                     }
                 } catch (Exception e) {
