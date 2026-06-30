@@ -71,9 +71,6 @@ public class DiscordIdentityProvider
         config.setAuthorizationUrl(AUTH_URL);
         config.setTokenUrl(TOKEN_URL);
         config.setUserInfoUrl(PROFILE_URL);
-        if (config.setPromptNone()) {
-            config.setPrompt("none");
-        }
     }
 
     @Override
@@ -159,7 +156,10 @@ public class DiscordIdentityProvider
                     for (JsonNode role : guildMember.get("roles")) {
                         String roleString = role.textValue();
                         if (mappedRoles.get(guild).containsKey(roleString)) {
-                            groups.add(mappedRoles.get(guild).get(roleString));
+                            groups.add(
+                                "discord-" +
+                                    mappedRoles.get(guild).get(roleString)
+                            );
                         }
                     }
                 } catch (Exception e) {
