@@ -163,9 +163,8 @@ public class DiscordIdentityProvider
                         }
                     }
                 } catch (Exception e) {
-                    throw new IdentityBrokerException(
-                        "Could not obtain guild member data from discord.",
-                        e
+                    log.debug(
+                        "Could not obtain guild member data from discord."
                     );
                 }
             }
