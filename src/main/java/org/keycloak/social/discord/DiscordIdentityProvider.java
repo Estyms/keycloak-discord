@@ -165,7 +165,6 @@ public class DiscordIdentityProvider
                     }
 
                     for (JsonNode role : guildMember.get("roles")) {
-                        log.info(role.textValue());
                         String roleString = role.textValue();
                         if (mappedRoles.get(guild).containsKey(roleString)) {
                             groups.add(mappedRoles.get(guild).get(roleString));
