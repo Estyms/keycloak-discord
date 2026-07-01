@@ -156,7 +156,16 @@ public class DiscordIdentityProvider
                     )
                         .header("Authorization", "Bearer " + accessToken)
                         .asJson();
+
+                    if (
+                        guildMember.has("joined_at") &&
+                        mappedRoles.get(guild).containsKey(guild)
+                    ) {
+                        groups.add(mappedRoles.get(guild).get(guild));
+                    }
+
                     for (JsonNode role : guildMember.get("roles")) {
+                        log.info(role.textValue());
                         String roleString = role.textValue();
                         if (mappedRoles.get(guild).containsKey(roleString)) {
                             groups.add(mappedRoles.get(guild).get(roleString));
